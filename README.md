@@ -55,7 +55,8 @@ default-lease-time 25920000;
 max-lease-time 3888000;
 authoritative;
 subnet 10.3.1.0 netmask 255.255.255.0 {
-    range 10.3.1.100 10.3.1.200;    option routers 10.3.1.254;
+    range 10.3.1.100 10.3.1.200;
+    option routers 10.3.1.254;
     option subnet-mask 255.255.255.0;
     option domain-name-servers 1.1.1.1
 }
