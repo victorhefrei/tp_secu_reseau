@@ -12,7 +12,7 @@ def detect_handshake(packet):
         connection_key = (ip_layer.src, ip_layer.dst, tcp_layer.sport, tcp_layer.dport)
         
         # Detect SYN (step 1)
-        if tcp_layer.flags == 'S':  # SYN flag
+        if tcp_layer.flags == 'S' or tcp_layer.flags == 'SEC':  # SYN flag
             handshake_tracker[connection_key] = 1  # Mark step 1 complete
             print(f"SYN packet detected from {ip_layer.src}:{tcp_layer.sport} to {ip_layer.dst}:{tcp_layer.dport}")
         
@@ -33,5 +33,5 @@ def detect_handshake(packet):
 
 # Start sniffing on the desired network interface (replace 'eth0' with your interface)
 print("Sniffing for SYN-ACK three-way handshake...")
-sniff(filter="tcp", iface="eth0", prn=detect_handshake)
+sniff(filter="tcp", iface="enp0s3", prn=detect_handshake)
   
